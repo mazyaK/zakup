@@ -1,0 +1,17 @@
+{% load mptt_tags %}
+{% load static %}
+
+<div class="container"><h1>Категории товаров</h1>
+<ul class="category_list" >
+    {% recursetree category_list %}
+        <li class="category_item">
+            <a href="{% url 'core:category_products' node.slug %}" >{{ node.name }}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+</div>

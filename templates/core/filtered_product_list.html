@@ -1,0 +1,34 @@
+{% load mptt_tags %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+            <ul class="category_list" >
+    {% recursetree children_categorys %}
+        <li class="category_item">
+            <a href="{% url 'core:category_products' node.slug %}" >{{ node.name }}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+            </ul>
+    </div>
+    <div class="row row-cols-4">
+        {% for product in product_list %}
+            <div class="col-md-3" style="
+margin-bottom: 25px;
+">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }} </p>
+                        <a href="/{{ category_slug }}/{{ product.slug }}" class="card-link btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
