@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from core.models import Product, Feedback, Category
+from cart.forms import CartAddProductForm
 
 
 def category_list_view(request):
@@ -15,13 +16,14 @@ def product_detail_view(request, slug, category_product_list_view):
     product_category = get_object_or_404(Category, slug=category_product_list_view)
     ancestor = product_category.get_ancestors(ascending=True, include_self=False)
 
-
     feedbacks = product.feedback.filter(active=True).all()
 
+    cart_product_form = CartAddProductForm()
     return render(request, template_name=template_name, context={
         'product': product,
         'product_category': product_category,
         'ancestor_categorys': ancestor,
+        'cart_product_form': cart_product_form,
     })
 
 

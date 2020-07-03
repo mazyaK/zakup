@@ -1,0 +1,32 @@
+{% load static %}
+{% block content %}
+    <h1>Корзина товаров</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Цена за 1 шт</th>
+            <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with product=item.product %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td class="num">{{ item.price }}</td>
+                    <td class="num">{{ item.total_price }}</td>
+                    <td><a href="{% url "cart:cart_remove" product.id%}">Убрать</a></td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Итого</td>
+            <td colspan="4"></td>
+            <td class="num">{{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

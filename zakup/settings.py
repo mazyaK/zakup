@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'crispy_forms',
     'mptt',
+    'cart',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -47,6 +48,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+CART_SESSION_ID = 'cart'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
