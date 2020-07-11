@@ -15,3 +15,17 @@
     {% endrecursetree %}
 </ul>
 </div>
+
+<div class="cart">
+    {% with total_items=cart|length %}
+        {% if cart|length > 0 %}
+            <a href="{% url "cart:cart_detail" %}">
+            <dt>Ваша корзина:</dt>
+            </a>
+                <dd>Кол-во товаров: {{ total_items }} {{ total_items|pluralize }}</dd>
+                <dd>Сумма: {{ cart.get_total_price }}</dd>
+        {% else %}
+            Your cart is empty.
+        {% endif %}
+    {% endwith %}
+</div>

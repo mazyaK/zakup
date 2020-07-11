@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'mptt',
     'cart',
+    'orders',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -75,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart'
             ],
         },
     },

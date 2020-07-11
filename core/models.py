@@ -75,13 +75,14 @@ class Feedback(models.Model):
     name = models.CharField(max_length=200)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=False)
+    updated_on = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['created_on']
 
     def __str__(self):
-        return f'Comment {self.body} by {self.name}'
+        return f'Comment on {self.product} by {self.name}'
 
 
 

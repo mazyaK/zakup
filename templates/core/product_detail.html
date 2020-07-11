@@ -17,3 +17,32 @@
     {% csrf_token %}
     <input type="submit" value="Добавить в корзину">
 </form>
+
+{% with feedbacks.count as total_feedbacks %}
+    <h2>
+        {{ total_feedbacks }} feedback{{ total_feedbacks|pluralize }}
+    </h2>
+{% endwith %}
+
+{% for feedback in feedbacks %}
+    <div class="feedback">
+        <p class="info">
+            feedback {{ forloop.counter }} by {{ feedback.name }}
+            {{ feedback.created }}
+        </p>
+        {{ feedback.body|linebreaks }}
+    </div>
+{% empty %}
+    <p>Отзывов пока нет.</p>
+{% endfor %}
+
+{% if new_feedback %}
+    <h2>Ваш отзыв был добавлен.</h2>
+{% else %}
+    <h2>Оставить новый отзыв</h2>
+    <form method="post">
+        {{ feedback_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Оставить отзыв"></p>
+    </form>
+{% endif %}
