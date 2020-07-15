@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.urls import reverse_lazy
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -42,13 +44,14 @@ INSTALLED_APPS = [
     'mptt',
     'cart',
     'orders',
+    'accounts',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'accounts.User'
 
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('core:category_list')
 
 CART_SESSION_ID = 'cart'
 
@@ -91,7 +94,7 @@ WSGI_APPLICATION = 'zakup.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'zakup',
+        'NAME': 'zakup_db',
         'USER': 'postgres',
         'PASSWORD': 'mazyakidze652',
         'HOST': '127.0.0.1',

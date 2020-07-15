@@ -1,6 +1,8 @@
+{% extends "base.html" %}
 {% load mptt_tags %}
 {% load static %}
 
+{% block content %}
 <div class="container"><h1>Категории товаров</h1>
 <ul class="category_list" >
     {% recursetree category_list %}
@@ -22,10 +24,12 @@
             <a href="{% url "cart:cart_detail" %}">
             <dt>Ваша корзина:</dt>
             </a>
-                <dd>Кол-во товаров: {{ total_items }} {{ total_items|pluralize }}</dd>
+                <dd>Кол-во товаров: {{ total_items }}</dd>
                 <dd>Сумма: {{ cart.get_total_price }}</dd>
         {% else %}
             Your cart is empty.
         {% endif %}
     {% endwith %}
 </div>
+
+{% endblock %}

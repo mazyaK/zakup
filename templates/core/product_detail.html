@@ -1,6 +1,8 @@
+{% extends "base.html" %}
 {% load mptt_tags %}
 {% load static %}
 
+{% block content %}
 <h1>{{ product.name }}</h1>
 
 
@@ -46,3 +48,4 @@
         <p><input type="submit" value="Оставить отзыв"></p>
     </form>
 {% endif %}
+{% endblock %}
