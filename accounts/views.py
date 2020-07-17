@@ -35,4 +35,4 @@ class ProfileUpdateView(generic.UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('accounts:profile', kwargs={'slug': self.object.slug})
+        return reverse('accounts:profile_detail', kwargs={'slug': self.object.slug})

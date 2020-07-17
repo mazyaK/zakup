@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'accounts',
+    'rest_framework',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -52,6 +53,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTH_USER_MODEL = 'accounts.User'
 
 LOGIN_REDIRECT_URL = reverse_lazy('core:category_list')
+
+LOGOUT_REDIRECT_URL = reverse_lazy('core:category_list')
 
 CART_SESSION_ID = 'cart'
 

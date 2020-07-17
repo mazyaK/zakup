@@ -1,35 +1,23 @@
 {% extends "base.html" %}
 {% load mptt_tags %}
-{% load static %}
+
 
 {% block content %}
-<div class="container"><h1>Категории товаров</h1>
-<ul class="category_list" >
-    {% recursetree category_list %}
-        <li class="category_item">
-            <a href="{% url 'core:category_products' node.slug %}" >{{ node.name }}</a>
-            {% if not node.is_leaf_node %}
-                <ul class="children">
-                    {{ children }}
-                </ul>
-            {% endif %}
-        </li>
-    {% endrecursetree %}
-</ul>
-</div>
 
-<div class="cart">
-    {% with total_items=cart|length %}
-        {% if cart|length > 0 %}
-            <a href="{% url "cart:cart_detail" %}">
-            <dt>Ваша корзина:</dt>
-            </a>
-                <dd>Кол-во товаров: {{ total_items }}</dd>
-                <dd>Сумма: {{ cart.get_total_price }}</dd>
-        {% else %}
-            Your cart is empty.
-        {% endif %}
-    {% endwith %}
-</div>
+        {% recursetree category_list %}
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="btn btn-light" href="{% url 'core:category_products' node.slug %}" >{{ node.name }}</a>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% if not node.is_leaf_node %}
+                            {{ children }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endrecursetree %}
 
-{% endblock %}
+{% endblock content %}
+
