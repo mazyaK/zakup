@@ -7,9 +7,9 @@
         {% recursetree category_list %}
             <div class="btn-group">
                 <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <a class="btn btn-light" href="{% url 'core:category_products' node.slug %}" >{{ node.name }}</a>
-                    </button>
+                <a class="btn btn-light" href="{% url 'core:category_products' node.slug %}" >{{ node.name }}</a><br>
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         {% if not node.is_leaf_node %}
                             {{ children }}

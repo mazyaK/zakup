@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -39,13 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
     'crispy_forms',
     'mptt',
+    'core',
     'cart',
     'orders',
     'accounts',
-    'rest_framework',
+    'api',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -57,6 +60,16 @@ LOGIN_REDIRECT_URL = reverse_lazy('core:category_list')
 LOGOUT_REDIRECT_URL = reverse_lazy('core:category_list')
 
 CART_SESSION_ID = 'cart'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
