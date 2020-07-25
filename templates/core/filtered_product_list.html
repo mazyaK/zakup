@@ -26,6 +26,7 @@ margin-bottom: 25px;
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
+                        <p><img src="{{ MEDIA_URL }}{{ product.image.url }}" width="220" height="140"></p>
                         <p class="card-text">{{ product.description }} </p>
                         <a href="/{{ category_slug }}/{{ product.slug }}" class="card-link btn btn-primary">Подробнее</a>
                     </div>
