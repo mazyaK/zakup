@@ -2,9 +2,7 @@ from rest_framework import status
 from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from accounts.models import User
-from cart.cart import Cart
 from core.models import Product, Category, Feedback
 from .serializers import (UserCreateSerializer,
                           UserUpdateSerializer,
@@ -16,8 +14,7 @@ from .serializers import (UserCreateSerializer,
                           CategoryDetailSerializer,
                           FeedbackCreateSerializer,
                           FeedbackListSerializer,
-                          FeedbackDetailSerializer,
-                          CartSerializer,)
+                          FeedbackDetailSerializer,)
 
 
 class UserCreateView(APIView):
