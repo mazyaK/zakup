@@ -29,4 +29,4 @@ requests==2.24.0
 rfc3986==1.4.0
 sniffio==1.1.0
 sqlparse==0.3.1
-urllib3==1.25.9
+urllib3==1.26.5
